@@ -1,5 +1,8 @@
 from numpy import roll
 
+######################
+### NAMES OF MODES ###
+######################
 NAMES_MODES = {}
 NAMES_MODES["I"]   = "Ionian"
 NAMES_MODES["II"]  = "Dorian"

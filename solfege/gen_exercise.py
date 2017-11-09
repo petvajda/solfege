@@ -18,10 +18,6 @@ PENTATON = [1, 2, 3, 5, 6]
 ####################
 MODES = [1, 2, 3, 4, 5, 6, 7]
 
-######################
-### NAMES OF MODES ###
-######################
-
 def check_order(list):
     for i in range(len(list)-1):
         if abs(list[i] - list[i+1]) <= 2:
