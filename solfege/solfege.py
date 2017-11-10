@@ -13,39 +13,48 @@ NAMES_MODES["VI"]  = "Aeolian"
 NAMES_MODES["VII"] = "Locrian"
 
 class Note:    
-    __reference_sharps  = [ "C", "C#", "D", "D#", "E", "F", "F#",
+    __chromatic_sharps  = [ "C", "C#", "D", "D#", "E", "F", "F#",
                             "G", "G#", "A", "A#", "B"]
-    __reference_flats   = [ "Cb", "C", "Db", "D", "Eb", "E", "F",
+    __chromatic_flats   = [ "Cb", "C", "Db", "D", "Eb", "E", "F",
                             "Gb", "G", "Ab", "A", "Bb", "B"]
-    
-    def __init__(self, note):
+                                
+    def __init__(self, note, use_sharp=True):
         note = note.capitalize()
-        self.flat = self.sharp = False
-        if note in self.__reference_sharps:
+        if note in self.__chromatic_sharps or self.__chromatic_flats:
             self.note  = note
-            self.sharp = True
-        elif note in self.__reference_flats:
-            self.note  = note
-            self.flat = True
         else:
-            raise Exception("Not a valid base Note: %s" % note)
-    
+            raise Exception("Not supported base Note: %s" % note)
+
+        self.__chromatic = self.__chromatic_sharps if use_sharp else self.__chromatic_flats
+        # print(self.__chromatic)
+        
     def __str__(self):
         return self.note
             
     def __add__(self, a):
-        i = self.__reference_sharps.index(self.note)
-        return Note(self.__reference_sharps[(i + a) % len(self.__reference_sharps)])
+        i = self.__chromatic.index(self.note)
+        return Note(self.__chromatic[(i + a) % len(self.__chromatic)])
 
     def __sub__(self, a):
-        i = self.__reference_sharps.index(self.note)
-        return Note(self.__reference_sharps[i - a])            
+        i = self.__chromatic.index(self.note)
+        return Note(self.__chromatic[(i - a) % len(self.__chromatic)])
 
 class Scale:
-    __distances = [2, 2, 1, 2, 2, 2, 1]
+    __distances  = [2, 2, 1, 2, 2, 2, 1]
+    __sharp_keys = ["C", "G",  "D",  "A",  "E",  "B", "F#", "C#",
+                           "G#", "D#", "A#", "E#", "B#"]
+    __flat_keys  = ["F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
 
     def __init__(self, base, mode):
-        self.base     = Note(base)
+        base=base.capitalize()
+        self.sharp = self.flat = False
+        if base in self.__sharp_keys:
+            self.sharp = True
+        elif base in self.__flat_keys:
+            self.flat = True
+        else:
+            raise Exception("Not supported base Note for a Scale: %s" % base)
+        self.base     = Note(base, self.sharp)
         self.type     = type
         self.notes    = [self.base, ]
         i = 1

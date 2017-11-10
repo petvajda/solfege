@@ -26,16 +26,20 @@ class TestNotes(unittest.TestCase):
         self.assertEqual(str(Note("C") - 3), "A")
         self.assertEqual(str(Note("D") - 3), "B")
         self.assertEqual(str(Note("E") - 9), "G")
-
+    
 class TestScales(unittest.TestCase):
         
-    def test_Ionian_scales(self):
+    def test_Ionian_scales_sharps(self):
         self.assertEqual(str(Scale("C", 1)), "C D E F G A B C")
         self.assertEqual(str(Scale("G", 1)), "G A B C D E F# G")
         self.assertEqual(str(Scale("D", 1)), "D E F# G A B C# D")
         self.assertEqual(str(Scale("A", 1)), "A B C# D E F# G# A")
         self.assertEqual(str(Scale("E", 1)), "E F# G# A B C# D# E")
         self.assertEqual(str(Scale("B", 1)), "B C# D# E F# G# A# B")
+
+    def test_Ionian_scales_flats(self):
+        # TODO Fix A# -> Bb
+        self.assertEqual(str(Scale("F", 1)), "F G A A# C D E F")
         
     def test_Dorian_scales(self):
         self.assertEqual(str(Scale("D", 2)), "D E F G A B C D")
@@ -60,6 +64,14 @@ class TestScales(unittest.TestCase):
     def test_Locrian_scales(self):
         self.assertEqual(str(Scale("B",  7)), "B C D E F G A B")
         self.assertEqual(str(Scale("C#", 7)), "C# D E F# G A B C#")
+
+    def test_flat_keys_flag(self):
+        self.assertTrue(Scale("F", 1).flat)
+        self.assertFalse(Scale("F", 1).sharp)
+
+    def test_sharp_keys_flag(self):
+        self.assertTrue(Scale("E", 1).sharp)
+        self.assertFalse(Scale("E", 1).flat)
                 
 if __name__ == '__main__':
     #test_exercise()
