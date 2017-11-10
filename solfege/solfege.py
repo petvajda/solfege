@@ -15,7 +15,7 @@ NAMES_MODES["VII"] = "Locrian"
 class Note:    
     __chromatic_sharps  = [ "C", "C#", "D", "D#", "E", "F", "F#",
                             "G", "G#", "A", "A#", "B"]
-    __chromatic_flats   = [ "Cb", "C", "Db", "D", "Eb", "E", "F",
+    __chromatic_flats   = [ "C", "Db", "D", "Eb", "E", "F",
                             "Gb", "G", "Ab", "A", "Bb", "B"]
                                 
     def __init__(self, note, use_sharp=True):
