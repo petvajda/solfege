@@ -7,10 +7,15 @@ Example C Major Scale and D Dorian:
 ```python
 from solfege import Scale
 
-str(Scale("C", 1))
+cmaj=Scale("C", 1)
+str(cmaj)
 'C D E F G A B C'
+cmaj.name
+'Ionian'
 
-str(Scale("D", 2))
+ddorain=Scale("D", 2)
+str(ddorain)
 'D E F G A B C D'
-
+ddorain.name_roman
+'II'
 ```
