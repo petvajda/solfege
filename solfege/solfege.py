@@ -15,8 +15,8 @@ NAMES_MODES["VII"] = "Locrian"
 class Note:    
     __chromatic_sharps  = [ "C", "C#", "D", "D#", "E", "F", "F#",
                             "G", "G#", "A", "A#", "B"]
-    __chromatic_flats   = [ "C", "Db", "D", "Eb", "E", "F",
-                            "Gb", "G", "Ab", "A", "Bb", "B"]
+    __chromatic_flats   = [ "C",  "Db", "D",  "Eb", "E",  "F",
+                            "Gb", "G",  "Ab", "A",  "Bb", "B"]
                                 
     def __init__(self, note, use_sharp=True):
         self.use_sharp = use_sharp
@@ -38,28 +38,32 @@ class Note:
 
     def __sub__(self, a):
         i = self.__chromatic.index(self.note)
-        return Note(self.__chromatic[(i - a) % len(self.__chromatic)])
+        return Note(self.__chromatic[(i - a) % len(self.__chromatic)], self.use_sharp)
 
 class Scale:
-    __distances  = [2, 2, 1, 2, 2, 2, 1]
-    __sharp_keys = ["C", "G",  "D",  "A",  "E",  "B", "F#", "C#",
-                           "G#", "D#", "A#", "E#", "B#"]
-    __flat_keys  = ["F", "Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
+    __ionian_distances   = [2, 2, 1, 2, 2, 2, 1]
+    __sharp_keys         = ["C",  "G",  "D",  "A",  "E",  "B", "F#", "C#",
+                            "G#", "D#", "A#", "E#", "B#"]
+    __flat_keys          = ["F",  "Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
+    __mode_to_half_steps = [2, 4, 5, 7, 9, 11, 12]
 
     def __init__(self, base, mode):
-        base=base.capitalize()
+        major_base=base.capitalize()
         self.sharp = self.flat = False
-        if base in self.__sharp_keys:
+        if mode == 2:
+            major_base = str(Note(base, False) - 2)
+        if major_base in self.__sharp_keys:
             self.sharp = True
-        elif base in self.__flat_keys:
+        elif major_base in self.__flat_keys:
             self.flat = True
         else:
             raise Exception("Not supported base Note for a Scale: %s" % base)
+        
         self.base     = Note(base, self.sharp)
         self.type     = type
         self.notes    = [self.base, ]
         i = 1
-        for d in roll(self.__distances, -1*mode+1):
+        for d in roll(self.__ionian_distances, -1*mode+1):
             self.notes.append(self.notes[i-1] + d)
             i = i + 1    
 

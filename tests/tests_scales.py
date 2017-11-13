@@ -18,9 +18,13 @@ class TestScales(unittest.TestCase):
         self.assertEqual(str(Scale("Bb", 1)), "Bb C D Eb F G A Bb")
         self.assertEqual(str(Scale("Eb", 1)), "Eb F G Ab Bb C D Eb")
                 
-    def test_Dorian_scales(self):
+    def test_Dorian_scales_sharps(self):
         self.assertEqual(str(Scale("D", 2)), "D E F G A B C D")
         self.assertEqual(str(Scale("A", 2)), "A B C D E F# G A")
+
+    def test_Dorian_scales_flats(self):
+        self.assertEqual(str(Scale("G", 2)), "G A Bb C D E F G")
+        self.assertEqual(str(Scale("C", 2)), "C D Eb F G A Bb C")
         
     def test_Phrygian_scales(self):
         self.assertEqual(str(Scale("E",  3)), "E F G A B C D E")
