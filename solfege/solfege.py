@@ -1,16 +1,13 @@
 from numpy import roll
 
-######################
-### NAMES OF MODES ###
-######################
-NAMES_MODES = {}
-NAMES_MODES["I"]   = "Ionian"
-NAMES_MODES["II"]  = "Dorian"
-NAMES_MODES["III"] = "Phrygian"
-NAMES_MODES["IV"]  = "Lydian"
-NAMES_MODES["V"]   = "Mixolydian"
-NAMES_MODES["VI"]  = "Aeolian"
-NAMES_MODES["VII"] = "Locrian"
+NAMES_MODES      = {}
+NAMES_MODES[0]   = ["I",   "Ionian"]
+NAMES_MODES[1]   = ["II",  "Dorian"]
+NAMES_MODES[2]   = ["III", "Phrygian"]
+NAMES_MODES[3]   = ["IV",  "Lydian"]
+NAMES_MODES[4]   = ["V",   "Mixolydian"]
+NAMES_MODES[5]   = ["VI",  "Aeolian"]
+NAMES_MODES[6]   = ["VII", "Locrian"]
 
 class Note:    
     __chromatic_sharps  = [ "C", "C#", "D", "D#", "E", "F", "F#",
@@ -27,7 +24,6 @@ class Note:
             raise Exception("Not supported base Note: %s" % note)
 
         self.__chromatic = self.__chromatic_sharps if use_sharp else self.__chromatic_flats
-        # print(self.__chromatic)
         
     def __str__(self):
         return self.note
@@ -66,7 +62,10 @@ class Scale:
         i = 1
         for d in roll(self.__ionian_distances, -1*mode+1):
             self.notes.append(self.notes[i-1] + d)
-            i = i + 1    
+            i = i + 1
+        
+        self.name_roman = NAMES_MODES[mode-1][0]
+        self.name       = NAMES_MODES[mode-1][1]
 
     def __str__(self):
         return " ".join(str(n) for n in self.notes)

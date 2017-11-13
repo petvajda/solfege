@@ -57,6 +57,18 @@ class TestScales(unittest.TestCase):
     def test_sharp_keys_flag(self):
         self.assertTrue(Scale("E", 1).sharp)
         self.assertFalse(Scale("E", 1).flat)
+    
+    def test_scale_names(self):
+        self.assertEqual(Scale("C",  1).name, "Ionian")
+        self.assertEqual(Scale("G",  2).name, "Dorian")
+        self.assertEqual(Scale("Bb", 3).name, "Phrygian")
+        self.assertEqual(Scale("B",  7).name, "Locrian")        
+
+    def test_scale_names_roman(self):
+        self.assertEqual(Scale("C", 1).name_roman,  "I")
+        self.assertEqual(Scale("G", 2).name_roman,  "II")
+        self.assertEqual(Scale("Bb", 3).name_roman, "III")
+        self.assertEqual(Scale("B", 7).name_roman,  "VII")
 
 if __name__ == '__main__':
     unittest.main()
