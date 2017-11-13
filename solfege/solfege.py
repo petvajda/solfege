@@ -52,6 +52,7 @@ class Scale:
         self.sharp = self.flat = False
         if mode == 2:
             major_base = str(Note(major_base, False) - self.__mode_to_half_steps[mode-2])
+
         if major_base in self.__sharp_keys:
             self.sharp = True
         elif major_base in self.__flat_keys:
