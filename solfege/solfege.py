@@ -19,6 +19,7 @@ class Note:
                             "Gb", "G", "Ab", "A", "Bb", "B"]
                                 
     def __init__(self, note, use_sharp=True):
+        self.use_sharp = use_sharp
         note = note.capitalize()
         if note in self.__chromatic_sharps or self.__chromatic_flats:
             self.note  = note
@@ -33,7 +34,7 @@ class Note:
             
     def __add__(self, a):
         i = self.__chromatic.index(self.note)
-        return Note(self.__chromatic[(i + a) % len(self.__chromatic)])
+        return Note(self.__chromatic[(i + a) % len(self.__chromatic)], self.use_sharp)
 
     def __sub__(self, a):
         i = self.__chromatic.index(self.note)

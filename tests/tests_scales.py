@@ -13,9 +13,10 @@ class TestScales(unittest.TestCase):
         self.assertEqual(str(Scale("E", 1)), "E F# G# A B C# D# E")
         self.assertEqual(str(Scale("B", 1)), "B C# D# E F# G# A# B")
 
-#    def test_Ionian_scales_flats(self):
-#        self.assertEqual(str(Scale("F", 1)),  "F G A Bb C D E F")
-#        self.assertEqual(str(Scale("Bb", 1)), "Bb C D Eb F G A Bb")
+    def test_Ionian_scales_flats(self):
+        self.assertEqual(str(Scale("F", 1)),  "F G A Bb C D E F")
+        self.assertEqual(str(Scale("Bb", 1)), "Bb C D Eb F G A Bb")
+        self.assertEqual(str(Scale("Eb", 1)), "Eb F G Ab Bb C D Eb")
                 
     def test_Dorian_scales(self):
         self.assertEqual(str(Scale("D", 2)), "D E F G A B C D")
