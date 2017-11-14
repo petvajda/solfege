@@ -64,8 +64,8 @@ class Scale:
             self.notes.append(self.notes[i-1] + d)
             i = i + 1
         
-        self.name_roman = NAMES_MODES[mode-1][0]
-        self.name       = NAMES_MODES[mode-1][1]
+        self.roman = NAMES_MODES[mode-1][0]
+        self.name  = NAMES_MODES[mode-1][1]
 
     def __str__(self):
         return " ".join(str(n) for n in self.notes)

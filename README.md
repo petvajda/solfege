@@ -16,6 +16,6 @@ cmaj.name
 ddorain=Scale("D", 2)
 str(ddorain)
 'D E F G A B C D'
-ddorain.name_roman
+ddorain.roman
 'II'
 ```

@@ -65,10 +65,10 @@ class TestScales(unittest.TestCase):
         self.assertEqual(Scale("B",  7).name, "Locrian")        
 
     def test_scale_names_roman(self):
-        self.assertEqual(Scale("C", 1).name_roman,  "I")
-        self.assertEqual(Scale("G", 2).name_roman,  "II")
-        self.assertEqual(Scale("Bb", 3).name_roman, "III")
-        self.assertEqual(Scale("B", 7).name_roman,  "VII")
+        self.assertEqual(Scale("C", 1).roman,  "I")
+        self.assertEqual(Scale("G", 2).roman,  "II")
+        self.assertEqual(Scale("Bb", 3).roman, "III")
+        self.assertEqual(Scale("B", 7).roman,  "VII")
 
 if __name__ == '__main__':
     unittest.main()
