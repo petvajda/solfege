@@ -37,35 +37,41 @@ class Note:
         return Note(self.__chromatic[(i - a) % len(self.__chromatic)], self.use_sharp)
 
 class Scale:
-    __ionian_distances   = [2, 2, 1, 2, 2, 2, 1]
-    __sharp_keys         = ["C",  "G",  "D",  "A",  "E",  "B", "F#", "C#",
-                            "G#", "D#", "A#", "E#", "B#"]
-    __flat_keys          = ["F",  "Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
-    __mode_to_half_steps = [2, 4, 5, 7, 9, 11, 12]
+    __base_notes            = ["C", "D", "E", "F", "G", "A", "B"]
+    __sharp_keys            = ["G",  "D",  "A",  "E",  "B", "F#", "C#",
+                               "G#", "D#", "A#", "E#", "B#"]
+    __flat_keys             = ["F",  "Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
 
-    def __init__(self, base, mode):
-        major_base=base.capitalize()
-        self.sharp = self.flat = False
-        if mode == 2:
-            major_base = str(Note(major_base, False) - self.__mode_to_half_steps[mode-2])
-
-        if major_base in self.__sharp_keys:
-            self.sharp = True
-        elif major_base in self.__flat_keys:
-            self.flat = True
-        else:
-            raise Exception("Not supported base Note for a Scale: %s" % base)
-        
-        self.base     = Note(base, self.sharp)
-        self.type     = type
-        self.notes    = [self.base, ]
-        i = 1
-        for d in roll(self.__ionian_distances, -1*mode+1):
-            self.notes.append(self.notes[i-1] + d)
-            i = i + 1
-        
+    def __init__(self, base, mode=1):
         self.roman = NAMES_MODES[mode-1][0]
         self.name  = NAMES_MODES[mode-1][1]
+        self.sharp = self.flat = False
+        base = base.capitalize()
+        if mode > 1:
+            base = self.__base_notes[self.__base_notes.index(base[:1])-mode+1]
+            if base=="B": base=base+"b" # FIXIT
+        if base == "C":
+            self.notes = self.__base_notes
+        else:
+            if base in self.__sharp_keys:
+                self.sharp = True
+                num_of_mod = self.__sharp_keys.index(base)
+                modfied_notes = self.__sharp_keys[5:6+num_of_mod]
+            elif base in self.__flat_keys:
+                self.flat = True
+                num_of_mod=self.__flat_keys.index(base)
+                modfied_notes = self.__flat_keys[1:2+num_of_mod]
+            else:
+                raise Exception("Not supported base Note for a Scale: %s" % base)
+
+            self.base      = Note(base)
+            self.notes     = roll(self.__base_notes, len(self.__base_notes) -
+                                 self.__base_notes.index(base[:1])).tolist()
+            for n in modfied_notes:
+                self.notes[self.notes.index(n[:1])] = n
+            
+        if mode > 1:
+            self.notes = roll(self.notes, -1*mode+1).tolist()
 
     def __str__(self):
         return " ".join(str(n) for n in self.notes)
