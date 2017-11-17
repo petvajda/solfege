@@ -23,6 +23,6 @@ text E Major
   </body>
 </html>
 """
-test_file = open("test.html",'w')
+test_file = open("test_scales.html",'w')
 test_file.write(html)
 test_file.close()
