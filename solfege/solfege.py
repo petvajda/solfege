@@ -76,8 +76,9 @@ class Scale:
     def __str__(self):
         return " ".join(str(n) for n in self.notes)
     
-    def vextab(self):
+    def vextab(self, i=2):
         vt_pre = """tabstave clef=treble notation=true tablature=false time=4/4
 notes """
-        notes_str = "-".join(str(n) for n in self.notes) + "/4"
+        notes_str =  "-".join(str(n) for n in self.notes[:i]) + "/4"
+        notes_str += "-".join(str(n) for n in self.notes[i:]) + "/5"
         return vt_pre + notes_str

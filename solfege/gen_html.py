@@ -1,5 +1,6 @@
 from solfege import Scale
-cmaj=Scale("C")
+amaj=Scale("A")
+emaj=Scale("E")
 html="""
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,12 @@ html="""
   <body>
 	<div class="vex-tabdiv"
     width=680 scale=1.0 editor="true"
-    editor_width=680 editor_height=330>""" + cmaj.vextab() + """
+    editor_width=680 editor_height=330>options space=10
+""" + amaj.vextab() + """
+text :h,A Major
+options space=10
+""" + emaj.vextab(5) + """
+text :h,E Major
 	</div>
   </body>
 </html>
