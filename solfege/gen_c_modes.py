@@ -19,25 +19,25 @@ html="""
 	<div class="vex-tabdiv"
     width=680 scale=1.0 editor="true"
     editor_width=680 editor_height=330>options space=10
-""" + cmaj.vextab(7) + """
+""" + cmaj.vextab("bass", 7, 3) + """
 text """ + cmaj.name + """
 options space=20
-""" + ddor.vextab(6) + """
+""" + ddor.vextab("bass", 6, 3) + """
 text """ + ddor.name + """
 options space=20
-""" + ephr.vextab(5) + """
+""" + ephr.vextab("bass", 5, 3) + """
 text """ + ephr.name + """
 options space=20
-""" + flyd.vextab(4) + """
+""" + flyd.vextab("bass", 4, 3) + """
 text """ + flyd.name + """
 options space=20
-""" + gmix.vextab(3) + """
+""" + gmix.vextab("bass", 3, 3) + """
 text """ + gmix.name + """
 options space=20
-""" + aaeo.vextab(2) + """
+""" + aaeo.vextab("bass", 2, 3) + """
 text """ + aaeo.name + """
 options space=20
-""" + bloc.vextab(1) + """
+""" + bloc.vextab("bass", 1, 3) + """
 text """ + bloc.name + """
 	</div>
   </body>
