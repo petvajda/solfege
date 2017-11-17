@@ -17,8 +17,8 @@ html="""
   </head>
   <body>
 	<div class="vex-tabdiv"
-    width=680 scale=1.0 editor="true"
-    editor_width=680 editor_height=330>options scale=0.8 space=10
+    width=680 scale=0.8 editor="true"
+    editor_width=680 editor_height=330>options space=10
 """ + cmaj.vextab("bass", 7, 3) + """
 text """ + cmaj.name + """
 options space=20
