@@ -12,10 +12,13 @@ str(cmaj)
 'C D E F G A B'
 cmaj.name
 'Ionian'
+emaj=Scale("E")
+str(emaj)
+'E F# G# A B C# D#'
 
-ddorain=Scale("D", 2)
-str(ddorain)
-'D E F G A B C'
-ddorain.roman
+cdor=Scale("C", 2)
+str(cdor)
+'C D Eb F G A Bb'
+cdor.roman
 'II'
 ```
