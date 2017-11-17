@@ -15,10 +15,10 @@ html="""
     width=680 scale=1.0 editor="true"
     editor_width=680 editor_height=330>options space=10
 """ + amaj.vextab() + """
-text :h,A Major
+text A Major
 options space=10
 """ + emaj.vextab(5) + """
-text :h,E Major
+text E Major
 	</div>
   </body>
 </html>
