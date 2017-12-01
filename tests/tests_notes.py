@@ -25,6 +25,16 @@ class TestNotes(unittest.TestCase):
         self.assertEqual(str(Note("C") - 3), "A")
         self.assertEqual(str(Note("D") - 3), "B")
         self.assertEqual(str(Note("E") - 9), "G")    
-                
+
+    def test_whole_up(self):
+        self.assertEqual(str(Note("C").w_up()),  "D")
+        self.assertEqual(str(Note("C#").w_up()), "D#")
+        self.assertEqual(str(Note("D").w_up()),  "E")
+        self.assertEqual(str(Note("E").w_up()),  "F#")
+        self.assertEqual(str(Note("B").w_up()),  "C#")
+        self.assertEqual(str(Note("Cb").w_up()), "Db")        
+#        self.assertEqual(str(Note("Eb").w_up()), "F")
+#        self.assertEqual(str(Note("Bb").w_up()), "C")
+        
 if __name__ == '__main__':
     unittest.main()
