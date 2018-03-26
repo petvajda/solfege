@@ -5,13 +5,27 @@ from solfege import Note
 
 class TestNotes(unittest.TestCase):
     
-    def test_add_notes(self):
+    def test_add_notes_sharp(self):
         self.assertEqual(str(Note("C") + 1), "C#")
         self.assertEqual(str(Note("C") + 2), "D")
+        self.assertEqual(str(Note("C") + 3), "D#")
         self.assertEqual(str(Note("C") + 4), "E")
+        self.assertEqual(str(Note("C") + 5), "F")
+        self.assertEqual(str(Note("C") + 6), "F#")
         self.assertEqual(str(Note("C") + 7), "G")
         self.assertEqual(str(Note("C") + 11), "B")
         self.assertEqual(str(Note("C") + 12), "C")
+
+    def test_add_notes_flat(self):
+        self.assertEqual(str(Note("C", False) + 1), "Db")
+        self.assertEqual(str(Note("C", False) + 2), "D")
+        self.assertEqual(str(Note("C", False) + 3), "Eb")
+        self.assertEqual(str(Note("C", False) + 4), "E")
+        self.assertEqual(str(Note("C", False) + 5), "F")
+        self.assertEqual(str(Note("C", False) + 6), "Gb")
+        self.assertEqual(str(Note("C", False) + 7), "G")
+        self.assertEqual(str(Note("C", False) + 11), "B")
+        self.assertEqual(str(Note("C", False) + 12), "C")
         
     def test_sub_notes(self):
         self.assertEqual(str(Note("D") - 1), "C#")
