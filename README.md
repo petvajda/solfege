@@ -1,9 +1,11 @@
 # solfege
-Solfege Library in Python. Supporting Note and Scale creation. Based on base Note can tell all the notes in a major and scale and modes (I-VII).
+Solfege Library in Python. Supporting Note and Scale creation. Just pass a base Note and the library can tell all the notes in a major scale and modes (I-VII).
 
 [More Info on Scale and Modes](https://en.wikipedia.org/wiki/Mode_(music))
 
+
 Example C Major Scale and D Dorian:
+
 ```python
 from solfege import Scale
 
@@ -21,4 +23,12 @@ str(cdor)
 'C D Eb F G A Bb'
 cdor.roman
 'II'
+```
+
+Also basic interval support (more will come later):
+```python
+from solfege import Note
+
+Note("C#").w_up()
+'D#'
 ```
