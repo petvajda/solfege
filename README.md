@@ -10,17 +10,16 @@ Example C Major Scale and D Dorian:
 from solfege import Scale
 
 cmaj=Scale("C")
-str(cmaj)
-'C D E F G A B'
+print(cmaj)
+C D E F G A B
 cmaj.name
 'Ionian'
 emaj=Scale("E")
-str(emaj)
-'E F# G# A B C# D#'
-
+print(emaj)
+E F# G# A B C# D#
 cdor=Scale("C", 2)
-str(cdor)
-'C D Eb F G A Bb'
+print(cdor)
+C D Eb F G A Bb
 cdor.roman
 'II'
 ```
