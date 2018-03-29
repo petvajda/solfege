@@ -43,7 +43,10 @@ class Note:
         mod = 1
         i = self.__base_notes.index(self.note[:1])
         if self.note[:1] == "E" or self.note[:1] == "B":
-            end = "#"
+            if self.note[1:] == "b":
+                mod = mod - 1
+            else:
+                end = "#"
         if self.note[1:] == "#":
             end = "#"
         elif self.note[1:] == "b":
