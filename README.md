@@ -35,8 +35,8 @@ Note("C#").w_up()
 
 Some useful scripts for example generating random key and modes to play on your instrument:
 
-```python
-python3 solfege/gen_exercise.py
+```
+$ python3 solfege/gen_exercise.py
 D [2, 5, 1, 6, 3]
 C# [6, 3, 7, 2, 5, 1, 4]
 ```
