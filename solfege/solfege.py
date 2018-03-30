@@ -37,6 +37,10 @@ class Note:
     def __sub__(self, a):
         i = self.__chromatic.index(self.note)
         return Note(self.__chromatic[(i - a) % len(self.__chromatic)], self.use_sharp)
+
+#    TODO: Make it simpler
+#    def w_up(self):
+#        return Note(self.__chromatic[self.__chromatic.index(self.note) + 2])
         
     def w_up(self):
         end = ""
@@ -54,13 +58,13 @@ class Note:
         return self.__base_notes[(i + 1) % len(self.__base_notes)] + end * mod
 
     def h_up(self):
-        pass
+        return Note(self.__chromatic[self.__chromatic.index(self.note) + 1])
 
     def w_down(self):
         pass
 
     def h_down(self):
-        pass
+        return Note(self.__chromatic[self.__chromatic.index(self.note) - 1])
 
 class Scale:
     __base_notes            = ["C", "D", "E", "F", "G", "A", "B"]

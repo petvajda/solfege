@@ -52,5 +52,19 @@ class TestNotes(unittest.TestCase):
         self.assertEqual(str(Note("Bb").w_up()),  "C")
         self.assertEqual(str(Note("B" ).w_up()),  "C#")
         
+    def test_half_up(self):        
+        self.assertEqual(str(Note("C"  ).h_up()), "C#")
+        self.assertEqual(str(Note("C#" ).h_up()), "D")
+        self.assertEqual(str(Note("D#" ).h_up()), "E")
+        self.assertEqual(str(Note("G"  ).h_up()), "G#")
+#       TODO  
+#       self.assertEqual(str(Note("Cb" ).h_up()), "C")
+#       self.assertEqual(str(Note("Db" ).h_up()), "D")
+#       self.assertEqual(str(Note("Eb" ).h_up()), "E")
+                
+    def test_half_down(self):        
+        self.assertEqual(str(Note("C#" ).h_down()), "C")
+        self.assertEqual(str(Note("D#" ).h_down()), "D")
+
 if __name__ == '__main__':
     unittest.main()
