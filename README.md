@@ -39,3 +39,9 @@ $ python3 solfege/gen_exercise.py
 D [2, 5, 1, 6, 3]
 C# [6, 3, 7, 2, 5, 1, 4]
 ```
+
+Example how to generate notation for scales with [VexTab](http://www.vexflow.com/vextab/):
+```
+$ python3 solfege/gen_c_modes_html.py
+```
+Then open the generated test_c_modes.html with your browser.
