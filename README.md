@@ -28,8 +28,10 @@ Also basic interval support (more will come later):
 ```python
 from solfege import Note
 
-Note("C#").w_up()
-'D#'
+print(Note("C#").h_up())
+D
+print(Note("C#").w_up())
+D#
 ```
 
 Some useful scripts for example generating random key and modes to play on your instrument:
