@@ -13,12 +13,16 @@ class Note:
     __chromatic_sharps  = [ "C", "C#", "D", "D#", "E", "F", "F#",
                             "G", "G#", "A", "A#", "B"]
     __chromatic_flats   = [ "C",  "Db", "D",  "Eb", "E",  "F",
-                            "Gb", "G",  "Ab", "A",  "Bb", "B"]
+                            "Gb", "G",  "Ab", "A",  "Bb", "Cb"]
     
     __base_notes        = ["C", "D", "E", "F", "G", "A", "B"]
     
     def __init__(self, note, use_sharp=True):
         self.use_sharp = use_sharp
+        if note[1:] == "#":
+            self.use_sharp = True
+        elif note[1:] == "b":
+            self.use_sharp = False
         note = note.capitalize()
         if note in self.__chromatic_sharps or self.__chromatic_flats:
             self.note  = note
@@ -38,33 +42,21 @@ class Note:
         i = self.__chromatic.index(self.note)
         return Note(self.__chromatic[(i - a) % len(self.__chromatic)], self.use_sharp)
 
-#    TODO: Make it simpler
-#    def w_up(self):
-#        return Note(self.__chromatic[self.__chromatic.index(self.note) + 2])
-        
     def w_up(self):
-        end = ""
-        mod = 1
-        i = self.__base_notes.index(self.note[:1])
-        if self.note[:1] == "E" or self.note[:1] == "B":
-            if self.note[1:] == "b":
-                mod = mod - 1
-            else:
-                end = "#"
-        if self.note[1:] == "#":
-            end = "#"
-        elif self.note[1:] == "b":
-            end = "b"
-        return self.__base_notes[(i + 1) % len(self.__base_notes)] + end * mod
-
+        return Note(self.__chromatic[(self.__chromatic.index(self.note) + 2)
+            % len(self.__chromatic)])
+        
     def h_up(self):
-        return Note(self.__chromatic[self.__chromatic.index(self.note) + 1])
+        return Note(self.__chromatic[(self.__chromatic.index(self.note) + 1)
+            % len(self.__chromatic)])
 
     def w_down(self):
-        pass
+        return Note(self.__chromatic[(self.__chromatic.index(self.note) - 2)
+            % len(self.__chromatic)])
 
     def h_down(self):
-        return Note(self.__chromatic[self.__chromatic.index(self.note) - 1])
+        return Note(self.__chromatic[(self.__chromatic.index(self.note) - 1)
+            % len(self.__chromatic)])
 
 class Scale:
     __base_notes            = ["C", "D", "E", "F", "G", "A", "B"]
