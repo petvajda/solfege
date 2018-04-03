@@ -1,5 +1,7 @@
-[![Build Status](https://travis-ci.org/petvajda/solfege.svg?branch=master)](https://travis-ci.org/petvajda/solfege)
 # solfege
+
+[![Build Status](https://travis-ci.org/petvajda/solfege.svg?branch=master)](https://travis-ci.org/petvajda/solfege)
+
 Solfege Library in Python. Supporting Note and Scale creation. Just pass a base Note and the library can tell all the notes in a major scale and modes (I-VII). [More Info on Scale and Modes](https://en.wikipedia.org/wiki/Mode_(music))
 
 Example C Major Scale and D Dorian:
